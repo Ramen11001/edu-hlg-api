@@ -2,7 +2,8 @@
 
 ## 🌟 **Project Description**
 
-This project is an **API** developed using **Node.js 16**, **Express** and **Sequelize**. The API enables the management of course platform
+Edu-HLG API is an advanced data management application designed for seamless course administration. It enables users to enroll in courses, manage subscriptions efficiently, and cancel enrollments when needed, all through a robust and intuitive system.
+This project is an **API** developed using **Node.js 16**, **Express** and **Sequelize**. The API enables the management of course platform.
 
 ## 🛠️ **Functional Requirements**
 
@@ -23,4 +24,3 @@ Clone this repository to your local machine.
    git clone <https://github.com/Ramen11001/edu-hlg-api.git>
 cd <edu-hlg-api>
 ```
-
