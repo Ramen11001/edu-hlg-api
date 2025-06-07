@@ -3,7 +3,7 @@ module.exports = {
     "development": {
       "host": "localhost",
       "port": 5432,
-      "database": "eduApi",
+      "database": "eduApiHlg",
       "username": "postgres",
       "password": "postgres",
       "dialect": "postgres",
