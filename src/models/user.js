@@ -43,6 +43,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
+      role: { 
+    type: DataTypes.ENUM('student', 'instructor'),
+    defaultValue: 'student',
+  }
     },
     {
       sequelize,
