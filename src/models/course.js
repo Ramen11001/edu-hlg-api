@@ -3,14 +3,23 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Course extends Model {
     /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
+     * Defines associations between models.
+     * This method is called automatically in `models/index.js` and is not part of the Sequelize lifecycle.
+     *
+     * @param {object} models - All defined models in the application.
      */
     static associate(models) {
-      // define association here
+      Course.belongsTo(models.User, {
+        foreignKey: "userId", // Defined in migration, links course to a specific user.
+        onDelete: "CASCADE", // Enables cascading deletion when a user is removed.
+      });
+
+      Course.hasMany(models.Comment, {
+        foreignKey: "courseId", // Defined in migration, links course to multiple comments.
+        onDelete: "CASCADE", // Enables cascading deletion when a course is removed.
+        as: "comments",
+      });
     }
-    // Initialize the User model with attributes
   }
   Course.init(
     {
