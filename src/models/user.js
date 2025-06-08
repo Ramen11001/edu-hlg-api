@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     // Initialize the User model with attributes
   }
   User.init(
-      /**
-       * Unique firstName, lastName and email for the user.
-       * Expected to be a non-null string.
-       */
+    /**
+     * Unique firstName, lastName and email for the user.
+     * Expected to be a non-null string.
+     */
     {
       firstName: {
         type: DataTypes.STRING,
@@ -43,10 +43,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
-      role: { 
-    type: DataTypes.ENUM('student', 'instructor'),
-    defaultValue: 'student',
-  }
+      role: {
+        type: DataTypes.ENUM("student", "instructor"),
+        defaultValue: "student",
+      },
     },
     {
       sequelize,
