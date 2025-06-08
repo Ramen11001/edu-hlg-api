@@ -49,7 +49,7 @@ module.exports = {
         mode: "hybrid",
         area: "health",
         level: "advanced",
-        teacher: "Dr. Ricardo Hernández",
+        teacher: "Prof. Ricardo Hernández",
         company: "Medical Academy",
         modules: ["Anatomy", "Surgery", "Clinical Practice"],
         duration: "hours",
