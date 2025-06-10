@@ -6,7 +6,7 @@ const {
   validateCommentDataUpdate,
 } = require("../validators/comment.validator");
 const { validationResult } = require("express-validator");
-
+const { filterPagination } = require("../middleware/filter");
 /**
  * Route handler for creating a new comment.
  * Validates the request body before passing it to the service.
@@ -34,7 +34,7 @@ router.post("/", validateCommentData, async (req, res) => {
  * @param {object} req - The HTTP request object.
  * @param {object} res - The HTTP response object.
  */
-router.get("/", async (req, res) => {
+router.get("/", filterPagination, async (req, res) => {
   try {
     const comments = await commentService.getComment(req.queryOptions);
     res.json(comments);

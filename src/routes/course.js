@@ -7,7 +7,7 @@ const {
   validateCourseData,
   validateCourseDataUpdate,
 } = require("../validators/course.validator");
-
+const { filterPagination } = require("../middleware/filter");
 /**
  * Route handler for creating a new course.
  * Validates the request body before passing it to the service.
@@ -35,7 +35,7 @@ router.post("/", validateCourseData, async (req, res) => {
  * @param {object} req - The HTTP request object.
  * @param {object} res - The HTTP response object.
  */
-router.get("/",  async (req, res) => {
+router.get("/", filterPagination, async (req, res) => {
   try {
     const course = await courseService.getCourses(req.queryOptions);
     res.json(course);
