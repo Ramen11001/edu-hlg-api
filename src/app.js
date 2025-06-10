@@ -10,6 +10,9 @@ var app = express();
 var coursesRouter = require("./routes/course");
 var commentsRouter = require("./routes/comment");
 var usersRouter = require("./routes/user");
+var indexRouter = require("./routes/index");
+const authRouter = require("./routes/auth");
+var authenticate = require("./middleware/auth");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -31,9 +34,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 ////new IMPLEMENTS ROUTES soon:
-app.use("/courses" , coursesRouter);
-app.use("/comments",  commentsRouter);
-app.use("/users", usersRouter);
+app.use("/", indexRouter);
+app.use("/auth", authRouter);
+app.use("/courses",  authenticate, coursesRouter);
+app.use("/comments",  authenticate, commentsRouter);
+app.use("/users",  authenticate, usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
