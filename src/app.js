@@ -8,6 +8,7 @@ var logger = require("morgan");
 //new routes soon:
 var app = express();
 var coursesRouter = require("./routes/course");
+var commentsRouter = require("./routes/comment");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -28,7 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+////new IMPLEMENTS ROUTES soon:
 app.use("/courses" , coursesRouter);
+app.use("/comments",  commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
