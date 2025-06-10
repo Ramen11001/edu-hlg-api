@@ -1,11 +1,12 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 const userService = require("../service/user.service");
 const {
   validateUserData,
-  validateUserDataUpdate } = require("../validators/user.validator");
+  validateUserDataUpdate,
+} = require("../validators/user.validator");
 const { validationResult } = require("express-validator");
-
+const { filterPagination } = require("../middleware/filter");
 
 /**
  * Route handler for creating a new user.
@@ -36,7 +37,7 @@ router.post("/", validateUserData, async (req, res) => {
  * @param {object} req - The HTTP request object.
  * @param {object} res - The HTTP response object.
  */
-router.get("/", async (req, res) => {
+router.get("/", filterPagination, async (req, res) => {
   try {
     const users = await userService.getUser(req.queryOptions);
     res.json(users);
@@ -80,10 +81,7 @@ router.put("/:id", validateUserDataUpdate, async (req, res) => {
   }
 
   try {
-    const updatedUser = await userService.updateUser(
-      req.params.id,
-      req.body
-    );
+    const updatedUser = await userService.updateUser(req.params.id, req.body);
     if (!updatedUser) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
@@ -114,4 +112,3 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
-
